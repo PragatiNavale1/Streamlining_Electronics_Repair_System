@@ -1,0 +1,176 @@
+
+
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: url('bg2.jpg') no-repeat center center fixed;
+
+    background-size: cover;
+    background-color: #f9f9f9;
+ 
+}
+
+
+
+.header {
+    position: sticky;
+    top: 0;
+    background-color: #004080;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: bold;
+    
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.header-menu a:hover {
+    color: #ffcc00;
+}
+
+.content {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 28px;
+    color: #004080;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #004080;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #ff9900;
+}
+
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    background-color: #004080;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0059b3;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: #004080;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+table {
+    margin: 30px auto;
+    border-collapse: collapse;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #004080;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffcc00;
+}
+
+button:focus {
+    outline: none;
+}
+
+.goto {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;     /* Vertically center */
+  height: 100%;            /* Ensure there's enough height */
+  text-align: center;      /* Optional: center text inside */
+}
