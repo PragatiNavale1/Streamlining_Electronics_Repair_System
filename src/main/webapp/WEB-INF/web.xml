@@ -88,6 +88,35 @@
     <servlet-name>TakenRepairmanRequestsServlet</servlet-name>
     <url-pattern>/taken_repairman_requests</url-pattern>
 </servlet-mapping>
-   
+
+<servlet>
+    <servlet-name>AssignRepairmanServlet</servlet-name>
+    <servlet-class>com.hrms.controller.AssignRepairmanServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>AssignRepairmanServlet</servlet-name>
+    <url-pattern>/AssignRepairmanServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>AcceptRequestServlet</servlet-name>
+    <servlet-class>com.hrms.controller.AcceptRequestServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AcceptRequestServlet</servlet-name>
+    <url-pattern>/AcceptRequestServlet</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+    <servlet-name>CompleteAppointmentServlet</servlet-name>
+    <servlet-class>com.hrms.controller.CompleteAppointmentServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CompleteAppointmentServlet</servlet-name>
+    <url-pattern>/CompleteAppointmentServlet</url-pattern>
+</servlet-mapping>
+
 
 </web-app>

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 if (role.equals("admin")) {
                     res.sendRedirect("admin_dashboard.jsp");
                 } else if (role.equals("repairman")) {
-                    res.sendRedirect("repairman_requests.jsp");
+                    res.sendRedirect("repairman_requests");
                 } else {
                     res.sendRedirect("dashboard.jsp");
                 }

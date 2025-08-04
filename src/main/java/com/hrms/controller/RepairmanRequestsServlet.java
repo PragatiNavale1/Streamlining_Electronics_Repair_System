@@ -3,7 +3,6 @@ package com.hrms.controller;
 import com.hrms.dao.RequestDAO;
 import com.hrms.util.DBConnection;
 import jakarta.servlet.*;
-
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
@@ -11,40 +10,45 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
-
 public class RepairmanRequestsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
         HttpSession session = req.getSession(false);
-        if (session == null || !"repairman".equals(session.getAttribute("role"))) {
-            res.sendRedirect(req.getContextPath() + "/login.jsp?error=Repairman+login+required");
-            return;
-        }
 
-        String repairmanEmail = (String) session.getAttribute("email");
-        if (repairmanEmail == null) {
-            res.sendRedirect(req.getContextPath() + "/login.jsp?error=Invalid+session");
-            return;
-        }
+        try {
+            // Ensure valid session and role
+            if (session == null || !"repairman".equals(session.getAttribute("role"))) {
+                res.sendRedirect("login.jsp?error=Access+Denied");
+                return;
+            }
 
-        try (Connection con = DBConnection.getConnection()) {
-            RequestDAO dao = new RequestDAO(con);
+            String repairmanEmail = (String) session.getAttribute("email");
+            if (repairmanEmail == null || repairmanEmail.isEmpty()) {
+                res.sendRedirect("login.jsp?error=Invalid+Session+Email");
+                return;
+            }
 
-            List<Map<String, String>> pending = dao.getPendingRequests();
-            List<Map<String, String>> assigned = dao.getRequestsByRepairmanEmail(repairmanEmail);
+            try (Connection con = DBConnection.getConnection()) {
+                RequestDAO dao = new RequestDAO(con);
 
-            req.setAttribute("pendingRequests", pending);
-            req.setAttribute("assignedRequests", assigned);
+                List<Map<String, String>> assignedRequests = dao.getRequestsByRepairmanEmail(repairmanEmail);
+                req.setAttribute("assignedRequests", assignedRequests);
 
-            RequestDispatcher rd = req.getRequestDispatcher("repairman_requests.jsp");
-            rd.forward(req, res);
+                // ✅ Forward to repairman dashboard
+                RequestDispatcher dispatcher = req.getRequestDispatcher("repairman_requests.jsp");
+                dispatcher.forward(req, res);
+            }
+
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new ServletException("Unable to load repairman requests", e);
+            e.printStackTrace(); // For debugging in console
+
+            // ✅ Instead of redirecting to error.jsp, show a user-friendly fallback
+            res.setContentType("text/html");
+            res.getWriter().write("<h2>⚠️ Unable to load assigned requests</h2>");
+            res.getWriter().write("<p>Error: " + e.getMessage() + "</p>");
+            res.getWriter().write("<a href='login.jsp'>Back to Login</a>");
         }
     }
-
 }
-
